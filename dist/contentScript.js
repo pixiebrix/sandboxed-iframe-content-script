@@ -6,8 +6,14 @@ button.onclick = async function () {
   const response = await chrome.runtime.sendMessage({
     command: "click",
   });
-  // do something with response here, not outside the function
-  console.log(response);
 };
 
 document.body.prepend(button);
+
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+  if (message.type === "CONTENT_SCRIPT_READINESS_CHECK") {
+    sendResponse({ success: "success" });
+  }
+});
+
+console.log("Content script loaded.");

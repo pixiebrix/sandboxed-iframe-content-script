@@ -4,12 +4,12 @@
   "author": "PixieBrix, Inc.",
   "name": "PixieBrix Minimum Extension Template",
   "short_name": "PixieBrix",
-  "description": "Template repository for minimum extension for issue reproductions",
+  "description": "Minimum reproduction of the srcDoc iframe error",
   "minimum_chrome_version": "116.0",
   "content_security_policy": {
     "extension_pages": "script-src 'self'; font-src 'self' https://fonts.gstatic.com; connect-src 'self' http: https:; object-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; frame-src 'self' http: https:"
   },
-  "permissions": ["activeTab", "tabs", "sidePanel"],
+  "permissions": ["webNavigation", "tabs"],
   "action": {
     "default_title": "Minimum Extension Template"
   },
@@ -21,7 +21,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*/*"],
+      "matches": ["<all_urls>"],
       "js": ["contentScript.js"],
       "all_frames": true
     }
